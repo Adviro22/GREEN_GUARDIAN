@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/Show_results/CSS/resultados.css' %}">
+    <title>Resultados</title>
+</head>
+<body>
+    <div class="results-container">
+        <h2>RESULTADOS:</h2>
+
+        <div class="result-box">
+            <div class="image_container">
+                <img src="{% static '/Show_results/IMG/platano.jpg' %}" alt="Imagen de la planta con tratamiento">
+            </div>
+            <div class="result-title">
+                <h2>Planta con Plaga</h2>
+                <p>Diagnóstico: Estas manchas son de forma irregular y suelen tener un color rojo oscuro o marrón, rodeadas de un halo amarillo. Con el tiempo, estas manchas pueden unirse y afectar gran parte de la superficie de las hojas, debilitando la planta y reduciendo su capacidad para producir frutos de calidad</p>
+                <h2>Tratamiento</h2>
+            </div>
+            <p>Usar los químicos de la Marca Diazol para evitar el deterioro de los frutos y de la planta.</p>
+            
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.Contenedor_resultados {
+    display: flex;
+    background-color: #1488ee; /* Fondo celeste para ambos contenedores */
+    color: #fff; /* Texto blanco para mejorar la legibilidad en el fondo celeste */
+    justify-content: center;
+    text-align: center;
+}
+
+.li_cultivo{
+    list-style: none;
+}
+
+.Imagen_resultados {
+    flex: 1; /* Ambos contenedores ocupan el mismo espacio */
+    padding: 20px; /* Añadido espacio alrededor de la imagen */
+    display: flex;
+    align-items: center; /* Alinea la imagen verticalmente con el texto del otro contenedor */
+    justify-content: center;
+}
+
+.Imagen_resultados img {
+    max-width: 100%; /* Hace que la imagen sea responsiva */
+    height: auto;
+}
+
+.Texto_resultados {
+    flex: 1; /* Ambos contenedores ocupan el mismo espacio */
+    padding: 20px;
+    justify-content: center;
+}
+
+.Texto_resultados h2, .Texto_resultados ul, .Texto_resultados li {
+    color: #333;
+}
+
+.Texto_resultados ul {
+    list-style-type: square;
+}
+
+.Texto_resultados li {
+    line-height: 1.5;
+}
+
+.imagen_objeto  {
+    width: 400px;
+    border-radius: 30px;
+}
+
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.history {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.green-bg {
+    flex: 1;
+    background-color: #1488ee;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Establecer un ancho máximo para las imágenes dentro de .green-bg */
+.green-bg img {
+    max-width: 30%; /* Hace que las imágenes sean responsivas y no excedan el ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
+/* Estilo adicional para mejorar la apariencia en el lado izquierdo */
+.history h1, .history h2, .history ul, .history li, .history p {
+    color: #333;
+}
+
+.history ul {
+    list-style-type: square;
+}
+
+.history p {
+    line-height: 1.5;
+}
+
+/* Agregar este estilo al final del archivo historial.css */
+
+.filtro-btn {
+    background-color: #808080;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.filtro-btn:hover {
+    background-color: #555;
+}
+
+.navbar {
+    overflow: hidden;
+}
+
+.navbar button {
+    float: right;
+}
+
+
+

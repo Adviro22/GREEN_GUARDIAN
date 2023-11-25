@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'Upload_file/CSS/styles.css' %}">
+    <title>Selección de Cultivo</title>
+</head>
+<body>
+    <div class="container">
+        <h1>DATOS DEL CULTIVO</h1> 
+        <label for="cultivo">Seleccione su cultivo:</label>
+        <br> <br> <br>
+        <select id="cultivo" name="cultivo">
+            <option value="trigo">Trigo</option>
+            <option value="maiz">Maíz</option>
+            <option value="tomate">Tomate</option>
+            <option value="patata">Patata</option>
+            <option value="fresa">Fresa</option>
+        </select>
+        <label for="imagen">Selecciona una imagen:</label>
+        <br> <br> <br>
+        <input type="file" id="imagen" name="imagen" accept="image/*">
+        <div class="button-container">
+            <button id="seleccionar" type="submit">Enviar</button>
+        </div>
+    </div>
+</body>
+</html>

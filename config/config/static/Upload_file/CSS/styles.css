@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+
+    /* Establece la imagen de fondo y la opacidad */
+    background-image: url('../IMG/fondo2.jpg'); /* Reemplaza con la ruta de tu imagen de fondo */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.9; /* Ajusta la opacidad (0.0 a 1.0) */
+}
+
+.container {
+    background-color: rgb(59, 28, 6); /* Color café para el fondo del formulario */
+    max-width: 600px;
+    height: 600px;
+    margin: 150px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: #fff; /* Color blanco para el texto dentro del formulario */
+}
+
+h1 {
+    font-size: 3em; /* Ajusta el tamaño del encabezado usando em o % */
+    margin-bottom: 30px; /* Más espacio en la parte inferior */
+}
+
+select {
+    width: 100%;
+    padding: 1em; /* Ajusta el relleno usando em o % */
+    border: 1px solid #C8E6C9; /* Fondo verde claro para el cuadro de selección de cultivos */
+    border-radius: 5px;
+    font-size: 1.5em; /* Ajusta el tamaño de fuente usando em o % */
+    margin-bottom: 20px; /* Aumenta la separación con el elemento siguiente */
+}
+
+label {
+    font-size: 1.5em; /* Ajusta el tamaño del texto del label */
+    margin-bottom: 20px; /* Aumenta la separación entre el texto y el campo de entrada */
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 1.5em;
+    border: 1px solid #C8E6C9;
+    border-radius: 5px;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    box-sizing: border-box; /* Añade esta línea para incluir el padding y el borde en el ancho */
+}
+
+
+button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 1.5em 2em; /* Ajusta el relleno usando em o % */
+    font-size: 1.5em; /* Ajusta el tamaño de fuente usando em o % */
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4CAF50;
+}
+
+/* Ajusta el margen superior del contenedor del botón */
+.button-container {
+    margin-top: 20px; /* Aumenta la separación en la parte superior del botón */
+}
