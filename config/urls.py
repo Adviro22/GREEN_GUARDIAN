@@ -26,10 +26,10 @@ from show_result.views import Show_Results
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', Homepage),
-    path('loginusers/', login),
-    path('registerusers/', register),
-    path('upload-file/', subida_archivos),
-    path('delete-history/', History),
-    path('show-result/', Show_Results),
+    path('', Homepage, name='home'),
+    path('loginusers/', login, name='login'),
+    path('registerusers/', register, name='register'),
+    path('upload-file/', subida_archivos, name='uptoload-file'),
+    path('delete-history/', History, name='delete-history'),
+    path('show-result/', Show_Results, name='show-result'),
 ]
