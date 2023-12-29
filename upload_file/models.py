@@ -7,6 +7,7 @@ class Registro (models.Model):
     fecha_registro = models.DateField(default=datetime, verbose_name="fecha de registro")
     nom_imagen =  models.CharField(max_length=100, verbose_name="Nombre de la imagen")
     id_usuario = models.IntegerField()
+    #tipo_planta   Many2Many => Odoo 
 
     def __str__(self):
         return self.name
