@@ -8,9 +8,11 @@ from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 from .models import Registro
 
+from show_result.models import Planta
 
 def subida_archivos(request):
-    return render(request, "uplaod_files.htm")
+    #planta = Planta.objects.dates()
+    return render(request, "uplaod_files.html")
 
 @csrf_exempt
 def save_result(request):

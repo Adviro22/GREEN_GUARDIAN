@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static '/Register/CSS/styles_register.css' %}">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>REGISTER</title>
 </head>
 <body>
@@ -14,17 +16,18 @@
         <div class="login-form">
             <h1>GREEN GUARDIAN</h1>
             <h2>Register</h2>
-            <form id="loginForm" action="#" method="post">
-                <input type="text" id="username" name="username" placeholder="Usuario" required>
-            <input type="text" id="email" name="email" placeholder="Correo" required>
-            <input type="password" id="password" name="password" placeholder="Contraseña" required>
-            <input type="password" id="password_confirm" name="password_confirm" placeholder="Confirmar Contraseña" required>
-            <button type="submit">Registrar</button>
+            <form id="RegisterForm" action="#"  method='post'>
+                {% csrf_token %}
+                <input type="text" id="name" name="name" placeholder="Nombre" required>
+                <input type="text" id="email" name="email" placeholder="Correo" required>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required autocomplete="on">
+                <button type="submit">Registrar</button>
             </form>
-            <p>¿Ya estás registrado? <a href="../login.html" id="registerLink">Inicia Sesion</a></p>
+            <p>¿Ya estás registrado? <a href="/loginusers" id="registerLink">Inicia Sesion</a></p>
         </div>
     </div>
+    
 
-    <script src="../js/script.js"></script>
+    <script src="{% static '/Register/JS/script.js' %}"></script>
 </body>
 </html>
