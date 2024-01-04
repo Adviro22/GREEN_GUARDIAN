@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static '/Login/CSS/styles_login.css' %}">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>LOGIN</title>
 </head>
 <body>
@@ -14,13 +16,16 @@
         <div class="login-form">
             <h1>GREEN GUARDIAN</h1>
             <h2>Login</h2>
-            <form id="loginForm" action="#" method="post">
-                <input type="text" id="username" name="username" placeholder="Usuario" required>
-                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+            <form id="LoginForm" action="#" method="post">
+                <input type="text" id="email" name="email" placeholder="Usuario" required>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required autocomplete="on">
+                {% csrf_token %}
                 <button type="submit">Iniciar Sesión</button>
             </form>
             <p>¿No tienes cuenta? <a href="/registerusers" id="registerLink">Registrate</a></p>
         </div>
     </div>
+
+    <script src="{% static '/Login/JS/script.js' %}"></script>
 </body>
 </html>

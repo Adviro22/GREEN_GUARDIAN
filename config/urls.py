@@ -17,9 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from login.views import login
+from login.views import login_view, login_user
 from homepage.views import Homepage
-from register.views import register
+from register.views import register, create_register
 from upload_file.views import subida_archivos, save_result
 from delete_history.views import History
 from show_result.views import Show_Results
@@ -27,10 +27,12 @@ from show_result.views import Show_Results
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Homepage, name='home'),
-    path('loginusers/', login, name='login'),
+    path('loginusers/', login_view, name='login'),
     path('registerusers/', register, name='register'),
     path('upload-file/', subida_archivos, name='uptoload-file'),
     path('delete-history/', History, name='delete-history'),
     path('show-result/', Show_Results, name='show-result'),
     path('saveResult/', save_result, name='save_result'),
+    path('create-user/', create_register, name='create_user'),
+    path('login_user/', login_user, name='login_user'),
 ]
