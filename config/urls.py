@@ -32,7 +32,7 @@ urlpatterns = [
     path('upload-file/', subida_archivos, name='uptoload-file'),
     path('delete-history/', History, name='delete-history'),
     path('show-result/', Show_Results, name='show-result'),
-    path('saveResult/', save_result, name='save_result'),
+    path('save_result/', save_result, name='save_result'),
     path('create-user/', create_register, name='create_user'),
     path('login_user/', login_user, name='login_user'),
 ]

@@ -5,7 +5,6 @@ $(document).ready(() => {
         email = $('#email');
 
     $('#RegisterForm').submit((e) => {
-        alert()
         e.preventDefault();
         const csrftoken = $('input[name=csrfmiddlewaretoken]').val();
         const PostData = {

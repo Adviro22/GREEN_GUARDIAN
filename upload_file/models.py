@@ -6,19 +6,20 @@ from datetime import datetime
 class Registro (models.Model):
     fecha_registro = models.DateField(default=datetime, verbose_name="fecha de registro")
     nom_imagen =  models.CharField(max_length=100, verbose_name="Nombre de la imagen")
+    imagen_binaria = models.BinaryField(blank=True, null=True)
     id_usuario = models.IntegerField()
-    #tipo_planta   Many2Many => Odoo 
+    plaga = models.IntegerField( default=0)
+    cultivo = models.IntegerField( default=0)
+
 
     def __str__(self):
-        return self.name
-    
+        return f"img_binaria: {self.imagen_binaria}, Nombre de Imagen: {self.nom_imagen}, Fecha de Registro: {self.fecha_registro}, Usuario ID: {self.id_usuario}, Plaga: {self.plaga}, Cultivo: {self.cultivo}"
     class Meta:
         verbose_name = "Registro"
         verbose_name_plural = "Registros"
         db_table = "Registro"
         ordering = ["id"]
 
-        
 
 
 

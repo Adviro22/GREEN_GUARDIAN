@@ -12,7 +12,6 @@ def create_register(request):
     try:
         if request.method == 'POST':
             data = json.loads(request.body.decode('utf-8'))
-            print(f'/***/ {data} /***/')
             name = data.get('name', '')
             e_mail = data.get('email', '')
             password = data.get('password', '')
