@@ -25,6 +25,7 @@ def login_user(request):
             if check_password(password, user.password):
                 # Iniciar sesión si la autenticación es exitosa
                 request.session['user_id'] = user.id
+                request.session['correo'] = user.e_mail
                 response_data = {'message': 'Inicio de sesión exitoso'}
                 return JsonResponse(response_data)
             else:

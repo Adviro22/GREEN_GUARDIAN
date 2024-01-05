@@ -1,6 +1,3 @@
-
-
-
 var size = 400;
 var canvas = document.getElementById('canvas');
 var tow_canvas = document.getElementById('tow_canvas');
@@ -8,11 +5,11 @@ var ctx = canvas.getContext('2d');
 var modelo = null;
 var input = document.getElementById('imagen');
 let respuesta
+let $cultivo = $('#cultivo').val()
 
 async function cambiarModelo() {
-    const selectElement = document.getElementById('cultivo');
-    const selectedValue = selectElement.value;
-    const nuevaRutaModelo = `/static/Upload_file/Model${selectedValue}/model.json`;
+    
+    const nuevaRutaModelo = `/static/Upload_file/Model${$cultivo}/model.json`;
     console.log("Cargando modelo...");
     modelo = await tf.loadLayersModel(nuevaRutaModelo);
     console.log("Modelo cargado", modelo);
@@ -61,22 +58,27 @@ function predecir() {
 
         var tensor = tf.tensor4d(arr);
         var resultado = modelo.predict(tensor).dataSync();
-
+        if($cultivo == 1){
+            
         if (resultado <= .4) {
             respuesta = 1;
         } else {
             respuesta = 2;
+        }
+        }else{
+            
+        if (resultado <= .4) {
+            respuesta = 1;
+        } else {
+            respuesta = 2;
+        }
         }
         console.log(resultado)
     }
 }
 
 $('#FormCultivo').submit((e) => {
-    e.preventDefault();
-    $cultivo = $('#cultivo').val()
-    if($cultivo == 2){
-        respuesta =  respuesta+2
-    }
+    e.preventDefault();  
     const csrftoken = $('input[name=csrfmiddlewaretoken]').val();
     const base64 = canvas.toDataURL('image/jpeg').split(',')[1];
     const PostData = {
@@ -97,7 +99,7 @@ $('#FormCultivo').submit((e) => {
             Swal.fire({
                 title: 'Respuesta ',
                 text: result.message,
-                confirmButtonText: '<a style="text-decoration: none; color:  white; font-size: 20px" href="/">Ok</a>',
+                confirmButtonText: '<a style="text-decoration: none; color:  white; font-size: 20px" href="/show-result/">Ok</a>',
             });
         }
     });

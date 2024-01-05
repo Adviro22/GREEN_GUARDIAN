@@ -17,12 +17,12 @@
             <h1>GREEN GUARDIAN</h1>
             <h2>Login</h2>
             <form id="LoginForm" action="#" method="post">
-                <input type="text" id="email" name="email" placeholder="Usuario" required>
+                <input type="text" id="email" name="email" placeholder="Correo" required>
                 <input type="password" id="password" name="password" placeholder="Contraseña" required autocomplete="on">
                 {% csrf_token %}
                 <button type="submit">Iniciar Sesión</button>
             </form>
-            <p>¿No tienes cuenta? <a href="/registerusers" id="registerLink">Registrate</a></p>
+            <p>¿No tienes cuenta? <a href="/registerusers/" id="registerLink">Registrate</a></p>
         </div>
     </div>
 

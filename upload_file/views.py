@@ -16,8 +16,9 @@ from django.http import HttpResponse
 
 def subida_archivos(request):
     todas_las_plantas = Planta.objects.all()
+    user_correo = request.session['correo']
     return render(
-        request, "uplaod_files.html", {"todas_las_plantas": todas_las_plantas}
+        request, "uplaod_files.html", {"todas_las_plantas": todas_las_plantas, 'correo': user_correo}
     )
 
 def save_result(request):

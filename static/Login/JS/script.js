@@ -22,7 +22,7 @@ $(document).ready(function () {
                     Swal.fire({
                         title: 'Respuesta ',
                         text: result.message,
-                        confirmButtonText: '<a style="text-decoration: none; color:  white; font-size: 20px" href="/upload-file/">Ok</a>',
+                        confirmButtonText: '<a style="text-decoration: none; color:  white; font-size: 20px" href="/delete-history/">Ok</a>',
                     });
                 }else{
                     Swal.fire({
