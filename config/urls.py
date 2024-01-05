@@ -21,7 +21,7 @@ from login.views import login_view, login_user
 from homepage.views import Homepage
 from register.views import register, create_register
 from upload_file.views import subida_archivos, save_result
-from delete_history.views import History
+from delete_history.views import History, eliminar_registro
 from show_result.views import Show_Results
 
 urlpatterns = [
@@ -35,4 +35,6 @@ urlpatterns = [
     path('save_result/', save_result, name='save_result'),
     path('create-user/', create_register, name='create_user'),
     path('login_user/', login_user, name='login_user'),
+    path('eliminar_registro/<int:registro_id>/', eliminar_registro, name='eliminar_registro'),
+
 ]

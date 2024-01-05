@@ -26,12 +26,11 @@ def login_user(request):
                 # Iniciar sesión si la autenticación es exitosa
                 request.session['user_id'] = user.id
                 response_data = {'message': 'Inicio de sesión exitoso'}
-                print(response_data)
                 return JsonResponse(response_data)
             else:
-                response_data = {'error': 'Credenciales incorrectas'}
+                response_data = {'mensaje': 'Credenciales incorrectas'}
                 print(response_data)
-                return JsonResponse(response_data, status=401)
+                return JsonResponse(response_data)
         else:
             return JsonResponse({'mensaje': 'Método no permitido'}, status=405)
     except Exception as e:

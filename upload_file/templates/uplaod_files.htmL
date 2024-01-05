@@ -18,7 +18,7 @@
         <h1>DATOS DEL CULTIVO</h1>
         <label for="cultivo">Seleccione su cultivo:</label>
         <br> <br> <br>
-        <form action="#" id="FormCultivo">
+        <form action="#" id="FormCultivo" enctype="multipart/form-data">
             {% csrf_token %}
             <select id="cultivo" name="cultivo" onchange="cambiarModelo()">
                 {% for planta in todas_las_plantas %}

@@ -7,10 +7,11 @@ import urllib.request
 from pathlib import Path
 from django.shortcuts import render
 from django.http import JsonResponse
-from django.conf import settings
+from config.settings import STATICFILES_DIRS
 from django.views.decorators.csrf import csrf_exempt
 from .models import Registro
 from show_result.models import Planta, Resultado
+from django.http import HttpResponse
 
 
 def subida_archivos(request):
@@ -24,8 +25,6 @@ def save_result(request):
         if request.method == "POST":
             # Obtener datos del cuerpo de la solicitud
             data = json.loads(request.body.decode("utf-8"))
-            print("Data recibida:", data)
-
             respuesta = data.get("respuesta", "")
             url_imagen = data.get("imagen", "")
             cultivo = data.get("cultivo", "")
@@ -34,21 +33,32 @@ def save_result(request):
                 # Obtener la fecha actual
                 fecha_actual = datetime.datetime.now().strftime("%Y-%m-%d")
                 nombre_archivo = f"result_image_{fecha_actual}.jpg"
-
                 
+                if STATICFILES_DIRS:
+                    directorio_static = STATICFILES_DIRS[0]
+                    ruta_img = os.path.join(directorio_static, 'Img')
+                else:
+                    print("STATICFILES_DIRS está vacío o no configurado correctamente.")
+
+                # Ruta completa al archivo en static/Img
+                ruta_completa = os.path.join(ruta_img, nombre_archivo)
+
                 # Crear un nuevo registro en la base de datos
                 nuevo_registro = Registro(
                     fecha_registro=fecha_actual,
                     nom_imagen=nombre_archivo,
-                    imagen_binaria=base64.b64decode(url_imagen),
+                    imagen_binaria=bytes(url_imagen, 'utf-8'),  
                     id_usuario=request.session.get("user_id", None),
                     plaga=respuesta,
                     cultivo=cultivo
                 )
                 nuevo_registro.save()
 
-                # Devolver una respuesta JSON con la URL de la imagen
-                url_imagen_completa = f"/static/ImagesResult/{nombre_archivo}"
+                # Escribir el archivo binario
+                with open(ruta_completa, 'wb') as img_file:
+                    img_file.write(nuevo_registro.imagen_binaria)
+
+                url_imagen_completa = f"/static/Img/{nombre_archivo}"
                 return JsonResponse(
                     {"mensaje": respuesta, "url_imagen": url_imagen_completa}
                 )

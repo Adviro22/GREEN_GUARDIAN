@@ -13,37 +13,38 @@
         <h1>Resultados Anteriores</h1>
         <button class="filtro-btn">Filtro</button>
     </div>
-        </div>
-        <div class="Contenedor_resultados">
-            <div class="Imagen_resultados">
-                <img src="{% static '/Delete_history/IMG/1Aguacate.jpg' %}" alt="Imagen 1" class="imagen_objeto">
-            </div>
-            <div class="Texto_resultados">
-                <h2>Cultivo en buen estado</h2>
-                <ul>
-                    <li class="li_cultivo">Descripción: Cultivo de aguacate</li>
-                    <li class="li_cultivo">23/10/2023  15:30PM</li>
-                </ul>
-                <h2>Cultivo con plaga detectada</h2>
-                <ul>
-            </div>
-        </div>
-        <br>
+     
 
-        <div class="Contenedor_resultados">
-            <div class="Imagen_resultados">
-                <img src="{% static '/Delete_history/IMG/2Banano.jpg' %}" alt="Imagen 1" class="imagen_objeto">
-            </div>
-            <div class="Texto_resultados">
-                <h2>Cultivo en buen estado</h2>
-                <ul>
-                    <li class="li_cultivo">Descripción: Cultivo de banano</li>
-                    <li class="li_cultivo">23/10/2023  15:30PM</li>
-                </ul>
-                <h2>Cultivo con plaga detectada</h2>
-                <ul>
-            </div>
+        {% if user_records %}
+        <div class="results-container">
+            {% for record in user_records %}
+                <div class="Contenedor_resultados">
+                    <div class="Imagen_resultados">
+                        <img src="{% static 'Img/' %}{{ record.nom_imagen }}" alt="Imagen de la planta con tratamiento">
+                    </div>
+                    <div class="Texto_resultados">
+                        <h2>Cultivo en buen estado</h2>
+                        <ul>
+                            <li class="li_cultivo">Descripción: Cultivo de banano</li>
+                            <li class="li_cultivo">23/10/2023  15:30PM</li>
+                        </ul>
+                        <h2>Cultivo con plaga detectada</h2>
+                        <ul>
+                            <p>Fecha de Registro: {{ record.fecha_registro }}</p>
+                            <p>Plaga: {{ record.plaga }}</p>
+                        </ul>
+                        <!-- Agregar el botón de eliminar -->
+                        <form method="post" action="{% url 'eliminar_registro' record.id %}">
+                            {% csrf_token %}
+                            <button type="submit">Eliminar</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
+    {% else %}
+        <p>No hay resultados disponibles.</p>
+    {% endif %}
     </div>
 </body>
 </html>

@@ -18,12 +18,20 @@ $(document).ready(function () {
             data: JSON.stringify(PostData),
             headers: { "X-CSRFToken": csrftoken },
             success: function (result) {
-
-                Swal.fire({
-                    title: 'Respuesta ',
-                    text: result.message,
-                    confirmButtonText: '<a style="text-decoration: none; color:  white; font-size: 20px" href="/upload-file/">Ok</a>',
-                });
+                if(result.message !='Credenciales incorrectas'){
+                    Swal.fire({
+                        title: 'Respuesta ',
+                        text: result.message,
+                        confirmButtonText: '<a style="text-decoration: none; color:  white; font-size: 20px" href="/upload-file/">Ok</a>',
+                    });
+                }else{
+                    Swal.fire({
+                        title: 'Respuesta ',
+                        text: result.mensaje,
+                        confirmButtonText: '<a style="text-decoration: none; color:  white; font-size: 20px">Ok</a>',
+                    });
+                
+                }
             }
         });
         return false;

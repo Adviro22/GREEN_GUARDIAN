@@ -13,17 +13,18 @@
 <body>
     <div class="results-container">
         <h2>RESULTADOS:</h2>
-        {% for resultado in resultados %}
         <div class="result-box">
+
             <div class="image_container">
-                <img src="data:image/jpg;base64,{{ resultado.img_binaria}}" alt="Imagen de la planta con tratamiento">
+                <img src="{{ latest_record.nom_imagen }}" alt="Imagen de la planta con tratamiento">
+
+
             </div>
             <div class="result-title">
                 
             </div>
             
         </div>
-        {% endfor %}
 
     </div>
 </body>

@@ -78,7 +78,7 @@ $('#FormCultivo').submit((e) => {
         respuesta =  respuesta+2
     }
     const csrftoken = $('input[name=csrfmiddlewaretoken]').val();
-    const base64 = canvas.toDataURL('image/jpeg');
+    const base64 = canvas.toDataURL('image/jpeg').split(',')[1];
     const PostData = {
         imagen:  base64, 
         respuesta: respuesta,
@@ -91,6 +91,7 @@ $('#FormCultivo').submit((e) => {
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(PostData),
         headers: { "X-CSRFToken": csrftoken },
+        mimeType: "multipart/form-data",
         success: function (result) {
 
             Swal.fire({
