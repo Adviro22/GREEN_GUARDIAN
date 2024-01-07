@@ -11,6 +11,7 @@ class Registro (models.Model):
     id_usuario = models.IntegerField()
     plaga = models.CharField( default='',max_length=100000)
     cultivo = models.CharField( default='', max_length=100000)
+    respuesta = models.CharField( default='',max_length=1000000)
     # plaga =  models.ForeignKey(Plaga, on_delete=models.CASCADE, verbose_name='Tipo de Planta')
     # cultivo =  models.ForeignKey(Planta, on_delete=models.CASCADE, verbose_name='Tipo de plaga')
 

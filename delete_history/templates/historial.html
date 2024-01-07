@@ -56,10 +56,10 @@
         text-align: center;
     }
 
-    .logo>img {
-        max-width: 180px;
+    img {
+        max-width: 200px !important;
         width: 100%;
-        height: auto;
+        height: auto !important;
         object-fit: cover;
     }
 
@@ -200,7 +200,7 @@
         <h1>Resultados Anteriores</h1>
         <button class="filtro-btn">Filtro</button>
     </div>
-     
+    
 
         {% if user_records %}
         <div class="results-container">
@@ -214,6 +214,7 @@
                         <ul>
                             <p>Fecha de Registro: {{ record.fecha_registro }}</p>
                             <p>Resultado: {{ record.plaga }}</p>
+                            <p>Resultado: {{ record.respuesta }}</p>
                         </ul>
                         <!-- Agregar el botón de eliminar -->
                         <form method="post" action="{% url 'eliminar_registro' record.id %}">
@@ -222,6 +223,7 @@
                         </form>
                     </div>
                 </div>
+                <br> <br>
             {% endfor %}
         </div>
     {% else %}

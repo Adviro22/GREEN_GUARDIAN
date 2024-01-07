@@ -21,59 +21,53 @@ def subida_archivos(request):
         request, "uplaod_files.html", {"todas_las_plantas": todas_las_plantas, 'correo': user_correo}
     )
 
+@csrf_exempt
 def save_result(request):
     try:
         if request.method == "POST":
-            # Obtener datos del cuerpo de la solicitud
-            data = json.loads(request.body.decode("utf-8"))
-            respuesta = data.get("respuesta", "")
-            url_imagen = data.get("imagen", "")
-            cultivo = data.get("cultivo", "")
+            respuesta = request.POST.get("respuesta", "")
+            cultivo = request.POST.get("cultivo", "")
+            url_imagen = request.FILES.get('imagen')
+            resultado = request.POST.get("resultado", "")
+            print(resultado)
 
-            if respuesta:
-                # Obtener la fecha actual
+            if respuesta and cultivo and url_imagen:
+                codigo_unico = datetime.datetime.now().strftime("%Y%m%d%H%M%S%f")
+                nombre_archivo = f"result_image_{codigo_unico}.jpg"
                 fecha_actual = datetime.datetime.now().strftime("%Y-%m-%d")
-                nombre_archivo = f"result_image_{fecha_actual}.jpg"
-                
-                if STATICFILES_DIRS:
-                    directorio_static = STATICFILES_DIRS[0]
-                    ruta_img = os.path.join(directorio_static, 'Img')
-                else:
-                    print("STATICFILES_DIRS está vacío o no configurado correctamente.")
+                ruta_img = os.path.join(STATICFILES_DIRS[0], 'Img')
 
-                # Ruta completa al archivo en static/Img
+                if not os.path.exists(ruta_img):
+                    os.makedirs(ruta_img)
+
                 ruta_completa = os.path.join(ruta_img, nombre_archivo)
 
-                # Crear un nuevo registro en la base de datos
+                with open(ruta_completa, 'wb') as img_file:
+                    for chunk in url_imagen.chunks():
+                        img_file.write(chunk)
+
                 nuevo_registro = Registro(
                     fecha_registro=fecha_actual,
                     nom_imagen=nombre_archivo,
-                    imagen_binaria=bytes(url_imagen, 'utf-8'),  
                     id_usuario=request.session.get("user_id", None),
                     plaga=respuesta,
-                    cultivo=cultivo
+                    cultivo=cultivo,
+                    respuesta=resultado
                 )
                 nuevo_registro.save()
 
-                # Escribir el archivo binario
-                with open(ruta_completa, 'wb') as img_file:
-                    img_file.write(nuevo_registro.imagen_binaria)
-
-                url_imagen_completa = f"/static/Img/{nombre_archivo}"
+                url_imagen_completa = f"{STATICFILES_DIRS}Img/{nombre_archivo}"
                 return JsonResponse(
                     {"mensaje": respuesta, "url_imagen": url_imagen_completa}
                 )
             else:
-                print("Datos faltantes en la solicitud")
                 return JsonResponse(
                     {"mensaje": "Datos faltantes en la solicitud"}, status=400
                 )
         else:
-            print("Método no permitido")
             return JsonResponse({"mensaje": "Método no permitido"}, status=405)
     except json.JSONDecodeError as e:
-        print("Error de decodificación JSON:", str(e))
         return JsonResponse({"error": "Error de decodificación JSON"}, status=400)
     except Exception as e:
-        print("Error:", str(e))
+        print(e)
         return JsonResponse({"error": str(e)}, status=500)

@@ -26,7 +26,11 @@
     />
 
     <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="{% static 'Homepage/CSS/bootstrap.css' %}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'Homepage/CSS/bootstrap.css' %}"
+    />
 
     <!-- fonts style -->
     <link
@@ -47,7 +51,11 @@
         <div class="container-fluid">
           <nav class="navbar navbar-expand-lg custom_nav-container">
             <a class="navbar-brand" href="index.html">
-              <img src="{% static '/Homepage/IMG/LOGO.jpeg' %}" alt="" id="logo" />
+              <img
+                src="{% static '/Homepage/IMG/LOGO.jpeg' %}"
+                alt=""
+                id="logo"
+              />
             </a>
 
             <div class="navbar-collapse" id="">
@@ -63,6 +71,9 @@
                   <a href="{% url 'home' %}">HOME</a>
                   <a href="{% url 'login' %}">LOGIN</a>
                   <a href="{% url 'register' %}">REGISTER</a>
+                  {% if user_id %} 
+                  <a href="/delete-history/">HISTORY</a>
+                  {% endif %}
                 </div>
               </div>
             </div>
@@ -110,17 +121,24 @@
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <div class="img-box">
-                      <img src="{% static 'Homepage/IMG/Banano y cacao_modificado.jpeg' %}" alt="" />
+                      <img
+                        src="{% static 'Homepage/IMG/Banano y cacao_modificado.jpeg' %}"
+                        alt=""
+                      />
                     </div>
                   </div>
                   <div class="carousel-item">
                     <div class="img-box">
-                      <img src="{% static '/Homepage/IMG/cultivo_modificado.jpeg' %} alt="" />
+                      <img src="{% static
+                      '/Homepage/IMG/cultivo_modificado.jpeg' %} alt="" />
                     </div>
                   </div>
                   <div class="carousel-item">
                     <div class="img-box">
-                      <img src="{% static '/Homepage/IMG/agricultor_modificado.jpeg' %}" alt="" />
+                      <img
+                        src="{% static '/Homepage/IMG/agricultor_modificado.jpeg' %}"
+                        alt=""
+                      />
                     </div>
                   </div>
                 </div>
@@ -345,7 +363,10 @@
               <div class="box">
                 <div class="head-box">
                   <div class="img-box">
-                    <img src="{% static '/Homepage/IMG/cloud-download.png' %}" alt="" />
+                    <img
+                      src="{% static '/Homepage/IMG/cloud-download.png' %}"
+                      alt=""
+                    />
                   </div>
                   <h6>Detección Temprana y Precisa</h6>
                 </div>
@@ -362,7 +383,10 @@
               <div class="box">
                 <div class="head-box">
                   <div class="img-box">
-                    <img src="{% static '/Homepage/IMG/trophy_.png' %}" alt="" />
+                    <img
+                      src="{% static '/Homepage/IMG/trophy_.png' %}"
+                      alt=""
+                    />
                   </div>
                   <h6>Ahorro de Tiempo y Recursos</h6>
                 </div>
@@ -391,7 +415,10 @@
               <div class="box">
                 <div class="head-box">
                   <div class="img-box">
-                    <img src="{% static '/Homepage/IMG/playstore.png' %}" alt="" />
+                    <img
+                      src="{% static '/Homepage/IMG/playstore.png' %}"
+                      alt=""
+                    />
                   </div>
                   <h6>Optimización de la Gestión de Plagas</h6>
                 </div>

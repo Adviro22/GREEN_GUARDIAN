@@ -56,8 +56,8 @@
         text-align: center;
     }
 
-    .logo>img {
-        max-width: 180px;
+    img {
+        max-width: 280px;
         width: 100%;
         height: auto;
         object-fit: cover;
@@ -202,12 +202,13 @@
         <div class="result-box">
 
             <div class="image_container">
-                <img src="{{ latest_record.nom_imagen }}" alt="Imagen de la planta con tratamiento">
+                <img src="{% static 'Img/' %}{{ latest_record.nom_imagen }}" alt="Imagen de la planta con tratamiento">
 
 
             </div>
             <div class="result-title">
                 <p>{{ latest_record.plaga }}</p>
+                <p>{{ latest_record.respuesta }}</p>
             </div>
             
         </div>

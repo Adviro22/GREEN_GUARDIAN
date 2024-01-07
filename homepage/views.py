@@ -3,7 +3,8 @@ from django.shortcuts import render
 # Create your views here.
 
 def Homepage(request):
-    return render(request, 'index.html')
+    user_id = request.session.get('user_id', 0)
+    return render(request, 'index.html', {'user_id': user_id})
 
 def logout(request):
     try:
