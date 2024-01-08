@@ -1,178 +1,182 @@
-{%  load static %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static '/Delete_history/CSS/historial.css' %}">
     <title>Historial de Plagas de Cultivos</title>
     <style>
-
         :root {
-        --white: #FFFFFF;
-        --black: #000;
-        --grey: #EEE9EA;
-        --color_ascent: #22004E;
-        /* #DC7422;*/
-        --color_second: #C6501A;
-        --color_tertiary: #4cd4b7;
-        --background: #000;
-        --color_fondo : rgba(29, 0, 67, 0.8)
+            --white: #FFFFFF;
+            --black: #000;
+            --grey: #EEE9EA;
+            --color_ascent: #22004E;
+            /* #DC7422;*/
+            --color_second: #C6501A;
+            --color_tertiary: #4cd4b7;
+            --background: #000;
+            --color_fondo: rgba(29, 0, 67, 0.8)
         }
 
         li {
-        list-style: none;
+            list-style: none;
         }
 
         a {
-        text-decoration: none;
-        color: var(--white);
+            text-decoration: none;
+            color: var(--white);
         }
 
         .header {
-        position: fixed;
-        color: #fff;
-        top: 0;
-        width: 100%;
-        min-height: 75px;
-        height: 10vh;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-around;
-        z-index: 1000 !important;
-        background: rgb(0, 0, 0);
-        background: linear-gradient(90deg, rgb(0, 0, 0) 11%, rgba(20, 2, 50, 1) 100%);
-    }
+            position: fixed;
+            color: #fff;
+            top: 0;
+            width: 100%;
+            min-height: 75px;
+            height: 10vh;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around;
+            z-index: 1000 !important;
+            background: rgb(0, 0, 0);
+            background: linear-gradient(90deg, rgb(0, 0, 0) 11%, rgba(20, 2, 50, 1) 100%);
+        }
 
-    .logo {
-        width: 10%;
-        height: 80%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
+        .logo {
+            width: 10%;
+            height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
 
-    img {
-        max-width: 200px !important;
-        width: 100%;
-        height: auto !important;
-        object-fit: cover;
-    }
+        img {
+            max-width: 200px !important;
+            width: 100%;
+            height: auto !important;
+            object-fit: cover;
+        }
 
-    .header__nav {
-        display: flex;
-        width: 100%;
-        align-items: flex-end;
-        justify-content: space-between;
-        transition: 1.1s ease-in-out;
-    }
+        .header__nav {
+            display: flex;
+            width: 100%;
+            align-items: flex-end;
+            justify-content: space-between;
+            transition: 1.1s ease-in-out;
+        }
 
-    .nav__ul {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        width: 80%;
-        color: var(--white);
-    }
+        .nav__ul {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 80%;
+            color: var(--white);
+        }
 
-    .nav__items,
-    .redes__items {
-        font: normal normal normal 1.2rem Arial;
-        opacity: .9;
-    }
+        .nav__items,
+        .redes__items {
+            font: normal normal normal 1.2rem Arial;
+            opacity: .9;
+        }
 
-    .nav__items {
-        position: relative;
-        display: inline-block;
-        padding: 10px 20px;
-        transition: all 0.3s ease-in-out;
-        overflow: hidden;
-    }
+        .nav__items {
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            transition: all 0.3s ease-in-out;
+            overflow: hidden;
+        }
 
-    .active>* {
-        color: var(--color_tertiary);
-    }
+        .active>* {
+            color: var(--color_tertiary);
+        }
 
-    .footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        min-height: 75px;
-        height: 10vh;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-around;
-        z-index: 1000 !important;
-        background-color: var(--black);
-        display: none;
-    }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            min-height: 75px;
+            height: 10vh;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around;
+            z-index: 1000 !important;
+            background-color: var(--black);
+            display: none;
+        }
 
-    .search-box {
-        width: fit-content;
-        height: fit-content;
-        position: relative;
-    }
+        .search-box {
+            width: fit-content;
+            height: fit-content;
+            position: relative;
+        }
 
-    .input-search {
-        height: 50px;
-        width: 50px;
-        border-style: none;
-        padding: 10px;
-        font-size: 18px;
-        letter-spacing: 2px;
-        outline: none;
-        border-radius: 25px;
-        transition: all .5s ease-in-out;
-        background-color: #22a6b3;
-        padding-right: 40px;
-        color: #fff;
-    }
+        .input-search {
+            height: 50px;
+            width: 50px;
+            border-style: none;
+            padding: 10px;
+            font-size: 18px;
+            letter-spacing: 2px;
+            outline: none;
+            border-radius: 25px;
+            transition: all .5s ease-in-out;
+            background-color: #22a6b3;
+            padding-right: 40px;
+            color: #fff;
+        }
 
-    .input-search::placeholder {
-        color: rgba(255, 255, 255, .5);
-        font-size: 18px;
-        letter-spacing: 2px;
-        font-weight: 100;
-    }
+        .input-search::placeholder {
+            color: rgba(255, 255, 255, .5);
+            font-size: 18px;
+            letter-spacing: 2px;
+            font-weight: 100;
+        }
 
-    .btn-search {
-        width: 50px;
-        height: 50px;
-        border-style: none;
-        font-size: 20px;
-        font-weight: bold;
-        outline: none;
-        cursor: pointer;
-        border-radius: 50%;
-        position: absolute;
-        right: 0px;
-        color: #ffffff;
-        background-color: transparent;
-        pointer-events: painted;
-    }
+        .btn-search {
+            width: 50px;
+            height: 50px;
+            border-style: none;
+            font-size: 20px;
+            font-weight: bold;
+            outline: none;
+            cursor: pointer;
+            border-radius: 50%;
+            position: absolute;
+            right: 0px;
+            color: #ffffff;
+            background-color: transparent;
+            pointer-events: painted;
+        }
 
-    .btn-search:focus~.input-search {
-        width: 300px;
-        border-radius: 0px;
-        background-color: transparent;
-        border-bottom: 1px solid rgba(255, 255, 255, .5);
-        transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
-    }
+        .btn-search:focus~.input-search {
+            width: 300px;
+            border-radius: 0px;
+            background-color: transparent;
+            border-bottom: 1px solid rgba(255, 255, 255, .5);
+            transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+        }
 
-    .input-search:focus {
-        width: 300px;
-        border-radius: 0px;
-        background-color: transparent;
-        border-bottom: 1px solid rgba(255, 255, 255, .5);
-        transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
-    }
+        .input-search:focus {
+            width: 300px;
+            border-radius: 0px;
+            background-color: transparent;
+            border-bottom: 1px solid rgba(255, 255, 255, .5);
+            transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+        }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
+
 <body>
     <header class="header">
         <nav class="header__nav">
@@ -192,43 +196,106 @@
                 <li class="nav__items">
                     <a href="/logout/"> Cerrar Sesion </a>
                 </li>
-    
+
             </ul>
         </nav>
     </header>
     <div class="navbar">
         <h1>Resultados Anteriores</h1>
-        <button class="filtro-btn">Filtro</button>
-    </div>
-    
+        <form id="filtroFechaForm">
+            <label for="fechaInicio">Fecha de Inicio:</label>
+            <input type="date" id="fechaInicio" name="fechaInicio">
 
-        {% if user_records %}
-        <div class="results-container">
-            {% for record in user_records %}
-                <div class="Contenedor_resultados">
-                    <div class="Imagen_resultados">
-                        <img src="{% static 'Img/' %}{{ record.nom_imagen }}" alt="Imagen de la planta con tratamiento">
-                    </div>
-                    <div class="Texto_resultados">
-                        <h2>EL RESULTADO ES: </h2>
-                        <ul>
-                            <p>Fecha de Registro: {{ record.fecha_registro }}</p>
-                            <p>Resultado: {{ record.plaga }}</p>
-                            <p>Resultado: {{ record.respuesta }}</p>
-                        </ul>
-                        <!-- Agregar el botón de eliminar -->
-                        <form method="post" action="{% url 'eliminar_registro' record.id %}">
-                            {% csrf_token %}
-                            <button type="submit">Eliminar</button>
-                        </form>
-                    </div>
-                </div>
-                <br> <br>
-            {% endfor %}
+            <label for="fechaFin">Fecha de Fin:</label>
+            <input type="date" id="fechaFin" name="fechaFin">
+
+            <button type="button" onclick="buscarRegistros()">Buscar</button>
+        </form>
+        <div id="resultadoRegistros">
+            <!-- Aquí se mostrarán los resultados -->
         </div>
+    </div>
+
+
+    {% if user_records %}
+    <div class="results-container" id="resultado_inicial">
+        {% for record in user_records %}
+        <div class="Contenedor_resultados">
+            <div class="Imagen_resultados">
+                <img src="{% static 'Img/' %}{{ record.nom_imagen }}" alt="Imagen de la planta con tratamiento">
+            </div>
+            <div class="Texto_resultados">
+                <h2>EL RESULTADO ES: </h2>
+                <ul>
+                    <p>Fecha de Registro: {{ record.fecha_registro }}</p>
+                    <p>Resultado: {{ record.plaga }}</p>
+                    <p>Resultado: {{ record.respuesta }}</p>
+                </ul>
+                <!-- Agregar el botón de eliminar -->
+                <form method="post" action="{% url 'eliminar_registro' record.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Eliminar</button>
+                </form>
+            </div>
+        </div>
+        <br> <br>
+        {% endfor %}
+    </div>
     {% else %}
-        <p>No hay resultados disponibles.</p>
+    <p>No hay resultados disponibles.</p>
     {% endif %}
     </div>
+    <script>
+        function buscarRegistros() {
+            var fechaInicio = $('#fechaInicio').val();
+            var fechaFin = $('#fechaFin').val();
+
+            // Realizar la solicitud AJAX al servidor
+            $.ajax({
+                type: 'GET',
+                url: '/search/',
+                data: {
+                    fecha_inicio: fechaInicio,
+                    fecha_fin: fechaFin
+                },
+                success: function (response) {
+                    mostrarResultados(response.registros);
+                },
+                error: function (error) {
+                    console.error('Error en la solicitud AJAX:', error.responseText);
+                }
+            });
+        }
+
+        var staticImageUrl = "{% static 'Img/' %}";
+        var eliminarRegistroUrl = "{% url 'eliminar_registro' ";
+        var eliminarRegistroUrlFin = " %}";
+        function mostrarResultados(registros) {
+            var template = '';
+            $('#resultado_inicial').hide();
+            registros.forEach(element => {
+                template += ` <div class="Contenedor_resultados">
+                <div class="Imagen_resultados">
+                    <img src="${staticImageUrl}${element.nom_imagen}" alt="Imagen de la planta con tratamiento">
+                </div>
+                <div class="Texto_resultados">
+                    <h2>EL RESULTADO ES: </h2>
+                    <ul>
+                        <p>Fecha de Registro: ${element.fecha_registro}</p>
+                        <p>Resultado: ${element.plaga}</p>
+                        <p>Resultado: ${element.resultado}</p>
+                    </ul>
+                    <form method="post" action='${eliminarRegistroUrl} ${element.id} ${eliminarRegistroUrlFin}">
+                        {% csrf_token %}
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </div>
+            </div> <br/> <br/>`;
+            });
+
+            $('#resultadoRegistros').html(template);
+        }
+    </script>
 </body>
+
 </html>
