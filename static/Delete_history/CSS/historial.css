@@ -6,9 +6,10 @@ body {
 .Contenedor_resultados {
     display: flex;
     background-color: #1488ee; /* Fondo celeste para ambos contenedores */
+    width: 100%;
     color: #fff; /* Texto blanco para mejorar la legibilidad en el fondo celeste */
     justify-content: center;
-    text-align: center;
+    align-items: center !important;
 }
 
 .li_cultivo{
@@ -29,17 +30,14 @@ body {
 }
 
 .Texto_resultados {
-    flex: 1; /* Ambos contenedores ocupan el mismo espacio */
-    padding: 20px;
-    justify-content: center;
+    flex: 1;
+    text-align: center;
+    height: 100%;
 }
 
 .Texto_resultados h2, .Texto_resultados ul, .Texto_resultados li {
     color: #333;
-}
-
-.Texto_resultados ul {
-    list-style-type: square;
+    width: 100%;
 }
 
 .Texto_resultados li {

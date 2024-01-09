@@ -207,7 +207,6 @@
             {% csrf_token %}
             <select id="cultivo" name="cultivo" onchange="cambiarModelo()">
                 {% for planta in todas_las_plantas %}
-                {{planta.id}}
                 <option value="{{planta.idplanta}}">{{planta.nombre}}</option>
                 {% endfor %}
             </select>

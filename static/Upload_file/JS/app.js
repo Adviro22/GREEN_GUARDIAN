@@ -8,14 +8,24 @@ let respuesta;
 let $cultivo = $("#cultivo").val();
 let resultado_plaga = '';
 
-async function cambiarModelo() {
-  const nuevaRutaModelo = `/static/Upload_file/Model${$cultivo}/model.json`;
-  console.log("Cargando modelo...");
-  modelo = await tf.loadLayersModel(nuevaRutaModelo);
-  console.log("Modelo cargado", modelo);
-}
+// async function cambiarModelo() {
+//   console.log($cultivo)
+//   const nuevaRutaModelo = `/static/Upload_file/Model${$cultivo}/model.json`;
+//   console.log("Cargando modelo...");
+//   modelo = await tf.loadLayersModel(nuevaRutaModelo);
+//   console.log("Modelo cargado", modelo);
+// }
 
-window.onload = cambiarModelo;
+  async function cambiarModelo() {
+    let $cultivo2 = $("#cultivo").val();
+    console.log($cultivo2)
+    let nuevaRutaModelo = `/static/Upload_file/Model${$cultivo2}/model.json`;
+    console.log("Cargando modelo...");
+    modelo = await tf.loadLayersModel(nuevaRutaModelo);
+    console.log("Modelo cargado", modelo);
+  }
+
+  window.onload = cambiarModelo;
 
 function processImage() {
   var img = new Image();
@@ -57,23 +67,32 @@ function predecir() {
 
     var tensor = tf.tensor4d(arr);
     var resultado = modelo.predict(tensor).dataSync();
-    if ($cultivo == 1) {
-      if (resultado <= 0.4) {
+    let $cultivo3 = $("#cultivo").val();
+    console.log(resultado)
+    if ($cultivo3 == 1) {
+      if (resultado >= 0.40) {
         respuesta = 'PLANTA INFECTADA';
-        resultado_plaga = 'PRUEBA GUANABANA'
+        resultado_plaga = `Limpieza física: Usa un cepillo suave, hisopo de algodón o una corriente de agua para eliminar manualmente las cochinillas de las hojas y tallos. Este método puede ser eficaz para tratar infestaciones leves.
+
+        Jabón insecticida: Mezcla agua con unas gotas de jabón insecticida suave y rocía la solución sobre las cochinillas. El jabón sofoca a los insectos y ayuda a controlar la infestación.
+        `
       } else {
         respuesta = 'PLANTA SANA';
-        resultado_plaga = 'PRUEBA GUANABANA'
+        resultado_plaga = 'Guanabana en buen estado, agregar abono y abundante Agua'
       }
     } else {
-      if (resultado <= 0.4) {
+      if (resultado >= 0.45) {
         respuesta = 'PLANTA INFECTADA';
-        resultado_plaga = 'PRUEBA CARAMBOLA'
+        resultado_plaga = `Fungicidas o insecticidas específicos: En caso de enfermedades específicas o infestaciones de insectos, considera el uso de productos químicos específicos según las recomendaciones de un profesional de la jardinería o agricultura.
+        Limpieza física: Usa un cepillo de dientes suave o un hisopo de algodón empapado en alcohol para eliminar las cochinillas de las hojas y tallos.
+
+        Jabón insecticida: Aplica un jabón insecticida o una solución de agua con unas gotas de detergente suave para controlar las cochinillas. Esto ayuda a sofocar y matar a los insectos.
+        `
       } else {
         respuesta = 'PLANTA SANA';
-        resultado_plaga = 'PRUEBA CARAMBOLA'
+        resultado_plaga = 'Carambola en buen estado, agregar abono y abundante Agua'
       }
-    }
+    } console.log(resultado)
   }
 }
 

@@ -33,7 +33,7 @@ def buscar_registros_por_rango_fecha(request):
 
         # Convertir las cadenas de fecha a objetos datetime si están presentes
         fecha_inicio = datetime.strptime(fecha_inicio_str, '%Y-%m-%d') if fecha_inicio_str else None
-        fecha_fin = datetime.strptime(fecha_fin_str, '%Y-%m-%d') + timedelta(days=1) if fecha_fin_str else None
+        fecha_fin = datetime.strptime(fecha_fin_str, '%Y-%m-%d')  if fecha_fin_str else None
 
         # Obtener user_id y correo de la sesión
         user_id = request.session.get('user_id', None)
@@ -42,7 +42,8 @@ def buscar_registros_por_rango_fecha(request):
         # Verificar que user_id y correo estén presentes
         if user_id is None or user_correo is None:
             raise Exception("La sesión del usuario no contiene información completa.")
-
+        print(f'Fecha Inicio:{fecha_inicio}')
+        print(f'Fecha Fin: {fecha_fin}')
         # Filtrar registros por rango de fecha y user_id
         registros = Registro.objects.filter(
             id_usuario=user_id,
