@@ -10,7 +10,7 @@ def History(request):
     try:
         user_id = request.session['user_id']
         user_correo = request.session['correo']
-        user_records = Registro.objects.filter(id_usuario=user_id).order_by('-fecha_registro')
+        user_records = Registro.objects.filter(id_usuario=user_id).order_by('-id')
         return render(request, 'historial.html', {'user_records': user_records, 'correo': user_correo})
     except KeyError:
         return redirect('/loginusers/') 
@@ -20,7 +20,7 @@ def eliminar_registro(request, registro_id):
     if request.method == 'POST':
         registro.delete()
         user_id = request.session['user_id']
-        user_records = Registro.objects.filter(id_usuario=user_id).order_by('-fecha_registro')
+        user_records = Registro.objects.filter(id_usuario=user_id).order_by('-id')
         return render(request, 'historial.html', {'user_records': user_records})
     return ''
 

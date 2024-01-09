@@ -130,11 +130,12 @@
             transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
         }
         .resultado{
-          font-size:  30px !important;
+          font-size:  20px !important;
+          width: 80% !important;
         }
 
         .titulo1{
-          font-size:  35px !important;
+          font-size:  30px !important;
         }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -191,8 +192,8 @@
                 <h2 class="titulo1">EL RESULTADO ES: </h2>
                 <ul class="resultado">
                     <p>Fecha de Registro: {{ record.fecha_registro }}</p>
-                    <p>Resultado: {{ record.plaga }}</p>
-                    <p>Resultado: {{ record.respuesta }}</p>
+                    <p>Estado: {{ record.plaga }}</p>
+                    <p>Recomendación: {{ record.respuesta }}</p>
                 </ul>
                 <!-- Agregar el botón de eliminar -->
                 <form method="post" action="{% url 'eliminar_registro' record.id %}">
